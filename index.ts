@@ -1,16 +1,17 @@
-type company_t = "Fender" | "Gibson" | "Ibanez" | "Musicman" | "Steinberg";
-type madeIn_t = "USA" | "Japan" | "Mexico" | "Indonesia" | "Other";
-type condition_t = "Mint" | "New" | "Used" | "Relic" | "Not Funciotnal";
+export type company_t = "Fender" | "Gibson" | "Ibanez" | "Musicman" | "Steinberg";
+export type madeIn_t = "USA" | "Japan" | "Mexico" | "Indonesia" | "Other";
+export type condition_t = "Mint" | "New" | "Used" | "Relic" | "Not Functional";
 
-type guitar_t = {
-    company : company_t;
-    year : number;
-    serial : string;
-    model : string;
-    madeIn : madeIn_t;
-    condition : condition_t;
-    details : boolean[];
-}
+export type guitar_t = {
+    company: company_t;
+    year: number;
+    serial: string;
+    model: string;
+    madeIn: madeIn_t;
+    condition: condition_t;
+    details: boolean[];
+};
+
 
 
 function submitForm() {
@@ -26,7 +27,7 @@ function submitForm() {
 
     const details = [originalParts, limitedEdition, discontinued];
 
-    const guitarData = {
+    const guitarObj = {
         company,
         year,
         serial,
@@ -36,7 +37,10 @@ function submitForm() {
         details
     };
 
-    console.log(guitarData);
+    console.log(guitarObj);
+
 }
+
+
 
 

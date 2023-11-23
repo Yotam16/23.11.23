@@ -1,22 +1,22 @@
 function submitForm() {
-    var company = document.getElementById('company').value;
-    var year = parseInt(document.getElementById('year').value, 10);
-    var serial = document.getElementById('serialNumber').value;
-    var model = document.getElementById('modelName').value;
-    var madeIn = document.getElementById('madeIn').value;
-    var condition = document.getElementById('condition').value;
-    var originalParts = document.getElementById('originalParts').checked;
-    var limitedEdition = document.getElementById('limitedEdition').checked;
-    var discontinued = document.getElementById('discontinued').checked;
-    var details = [originalParts, limitedEdition, discontinued];
-    var guitarData = {
-        company: company,
-        year: year,
-        serial: serial,
-        model: model,
-        madeIn: madeIn,
-        condition: condition,
-        details: details
+    const company = document.getElementById('company').value;
+    const year = parseInt(document.getElementById('year').value, 10);
+    const serial = document.getElementById('serialNumber').value;
+    const model = document.getElementById('modelName').value;
+    const madeIn = document.getElementById('madeIn').value;
+    const condition = document.getElementById('condition').value;
+    const originalParts = document.getElementById('originalParts').checked;
+    const limitedEdition = document.getElementById('limitedEdition').checked;
+    const discontinued = document.getElementById('discontinued').checked;
+    const details = [originalParts, limitedEdition, discontinued];
+    const guitarObj = {
+        company,
+        year,
+        serial,
+        model,
+        madeIn,
+        condition,
+        details
     };
-    console.log(guitarData);
+    console.log(guitarObj);
 }
