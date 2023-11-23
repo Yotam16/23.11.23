@@ -11,7 +11,7 @@
 
     <h1>Record a New Guitar</h1>
 
-    <form onsubmit="submitForm(); return false;">
+    <form id="form" onsubmit="submitForm(); return false;">
         <label for="company">Company:</label>
         <select id="company" name="company" required>
             <option value="Fender">Fender</option>
@@ -61,11 +61,11 @@
 
         <br>
 
-        <label for="additionalFeatures">Additional Features:</label>
-        <input type="checkbox" id="originalParts" name="originalParts"> <label for="originalParts">All Original Parts</label>
-        <input type="checkbox" id="limitedEdition" name="limitedEdition"> <label for="limitedEdition">Limited Edition</label>
-        <input type="checkbox" id="discontinued" name="discontinued"> <label for="discontinued">Discontinued</label>
-
+        <label id="additionalFeatures">Additional Features</label>
+        <input type="checkbox" id="originalParts" class="additional-feature" name="originalParts"> <label for="originalParts">All Original Parts</label>
+        <input type="checkbox" id="limitedEdition" class="additional-feature" name="limitedEdition"> <label for="limitedEdition">Limited Edition</label>
+        <input type="checkbox" id="discontinued" class="additional-feature" name="discontinued"> <label for="discontinued">Discontinued</label>
+        
         <br>
 
         <button type="submit">Submit</button>

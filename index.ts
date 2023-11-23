@@ -14,7 +14,7 @@ export type guitar_t = {
 
 
 
-function submitForm() {
+export function submitForm() {
     const company = (document.getElementById('company') as HTMLSelectElement).value as company_t;
     const year = parseInt((document.getElementById('year') as HTMLInputElement).value, 10);
     const serial = (document.getElementById('serialNumber') as HTMLInputElement).value;

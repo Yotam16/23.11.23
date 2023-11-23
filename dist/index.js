@@ -1,4 +1,4 @@
-function submitForm() {
+export function submitForm() {
     const company = document.getElementById('company').value;
     const year = parseInt(document.getElementById('year').value, 10);
     const serial = document.getElementById('serialNumber').value;
