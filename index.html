@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Record a New Guitar</title>
-    <link rel="stylesheet" href="./styles.css"> 
+    <link rel="stylesheet" href="./styles.css">
+    <script  type="module" src="./dist/index.js"></script>
 </head>
 <body>
 
     <h1>Record a New Guitar</h1>
 
-    <form action="/submit" method="post">
+    <form onclick=submitForm()>
         <label for="company">Company:</label>
         <select id="company" name="company" required>
             <option value="Fender">Fender</option>
