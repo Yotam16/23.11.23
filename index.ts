@@ -1,17 +1,4 @@
-export type company_t = "Fender" | "Gibson" | "Ibanez" | "Musicman" | "Steinberg";
-export type madeIn_t = "USA" | "Japan" | "Mexico" | "Indonesia" | "Other";
-export type condition_t = "Mint" | "New" | "Used" | "Relic" | "Not Functional";
-
-export type guitar_t = {
-    company: company_t;
-    year: number;
-    serial: string;
-    model: string;
-    madeIn: madeIn_t;
-    condition: condition_t;
-    details: boolean[];
-};
-
+import { company_t, madeIn_t,condition_t, guitar_t, loadStock, saveStock } from "./foo.js";
 
 
 export function submitForm() {
@@ -39,7 +26,23 @@ export function submitForm() {
 
     console.log(guitarObj);
 
+    const stock = loadStock();
+    const updatedStock = [...stock, guitarObj];
+
+    saveStock(updatedStock);
+
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form');
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            submitForm();
+        });
+    }
+});
 
 
 
