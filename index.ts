@@ -22,7 +22,7 @@ export function submitForm() {
         madeIn,
         condition,
         details
-    };
+    } as guitar_t;
 
     console.log(guitarObj);
 
@@ -33,6 +33,26 @@ export function submitForm() {
 
 }
 
+export function printStock() {
+
+    const stock: guitar_t[] = loadStock();
+    const listContainer = document.getElementById('list-container');
+
+    if (listContainer) {
+        const ul = document.createElement('ul');
+
+
+        for (const guitar of stock) {
+            const li = document.createElement('li');
+            li.textContent = `${guitar.company} - ${guitar.model} (${guitar.year})`;
+            ul.appendChild(li);
+
+        }
+    listContainer?.appendChild(ul);
+    }
+}
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form');
@@ -41,6 +61,15 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             submitForm();
         });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    if (document.getElementById('list-container')) {
+    
+        console.log('loading printStock(), if you are not on the list page you should not see this');
+        printStock();
     }
 });
 

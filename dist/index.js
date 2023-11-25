@@ -31,6 +31,20 @@ export function submitForm() {
     var updatedStock = __spreadArrays(stock, [guitarObj]);
     saveStock(updatedStock);
 }
+export function printStock() {
+    var stock = loadStock();
+    var listContainer = document.getElementById('list-container');
+    if (listContainer) {
+        var ul = document.createElement('ul');
+        for (var _i = 0, stock_1 = stock; _i < stock_1.length; _i++) {
+            var guitar = stock_1[_i];
+            var li = document.createElement('li');
+            li.textContent = guitar.company + " - " + guitar.model + " (" + guitar.year + ")";
+            ul.appendChild(li);
+        }
+        listContainer === null || listContainer === void 0 ? void 0 : listContainer.appendChild(ul);
+    }
+}
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('form');
     if (form) {
@@ -39,4 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
             submitForm();
         });
     }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOM loaded, trying to print...");
+    printStock();
 });
