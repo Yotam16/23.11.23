@@ -5,7 +5,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-import { loadStock, saveStock } from "./foo.js";
+import { loadStock, saveStock, clearStock } from "./foo.js";
 export function submitForm() {
     var company = document.getElementById('company').value;
     var year = parseInt(document.getElementById('year').value, 10);
@@ -33,17 +33,22 @@ export function submitForm() {
 }
 export function printStock() {
     var stock = loadStock();
-    var listContainer = document.getElementById('list-container');
-    if (listContainer) {
-        var ul = document.createElement('ul');
+    var listContainer = document.getElementById('listContainer');
+    var ul = document.createElement('ul');
+    if (listContainer !== null && listContainer !== undefined) {
         for (var _i = 0, stock_1 = stock; _i < stock_1.length; _i++) {
             var guitar = stock_1[_i];
             var li = document.createElement('li');
-            li.textContent = guitar.company + " - " + guitar.model + " (" + guitar.year + ")";
+            li.textContent = guitar.company + " " + guitar.model + " #" + guitar.serial + ", made in " + guitar.year + ". Condition is " + guitar.condition;
             ul.appendChild(li);
         }
-        listContainer === null || listContainer === void 0 ? void 0 : listContainer.appendChild(ul);
     }
+    else {
+        var li = document.createElement('li');
+        li.textContent = 'There are currently no guitars in stock!';
+        ul.appendChild(li);
+    }
+    listContainer === null || listContainer === void 0 ? void 0 : listContainer.appendChild(ul);
 }
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('form');
@@ -55,6 +60,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("DOM loaded, trying to print...");
-    printStock();
+    if (document.getElementById('listContainer')) {
+        console.log('loading printStock(), if you are not on the list page you should not see this');
+        printStock();
+    }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    var clearStockButton = document.getElementById('clearStock');
+    if (clearStockButton) {
+        clearStockButton.addEventListener('click', function () {
+            clearStock();
+            console.log("stock cleared");
+        });
+    }
 });

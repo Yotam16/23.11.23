@@ -33,3 +33,10 @@ export function saveStock(stock: guitar_t[]) {
     console.log("stock saved");
 }
 
+export function clearStock() {
+
+    const emptyStock: guitar_t[] = [];
+    localStorage.setItem('guitarstock', JSON.stringify(emptyStock));
+    console.log("stock cleared:");
+
+}

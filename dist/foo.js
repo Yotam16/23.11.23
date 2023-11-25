@@ -13,3 +13,8 @@ export function saveStock(stock) {
     localStorage.setItem('guitarstock', StockJSON);
     console.log("stock saved");
 }
+export function clearStock() {
+    var emptyStock = [];
+    localStorage.setItem('guitarstock', JSON.stringify(emptyStock));
+    console.log("stock cleared:");
+}

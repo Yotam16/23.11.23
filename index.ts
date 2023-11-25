@@ -1,4 +1,4 @@
-import { company_t, madeIn_t,condition_t, guitar_t, loadStock, saveStock } from "./foo.js";
+import { company_t, madeIn_t,condition_t, guitar_t, loadStock, saveStock, clearStock } from "./foo.js";
 
 
 export function submitForm() {
@@ -36,20 +36,26 @@ export function submitForm() {
 export function printStock() {
 
     const stock: guitar_t[] = loadStock();
-    const listContainer = document.getElementById('list-container');
-
+    const listContainer = document.getElementById('listContainer');
+    const ul = document.createElement('ul');
+    
     if (listContainer) {
-        const ul = document.createElement('ul');
-
-
+    
         for (const guitar of stock) {
             const li = document.createElement('li');
-            li.textContent = `${guitar.company} - ${guitar.model} (${guitar.year})`;
+            li.textContent = `${guitar.company} ${guitar.model} #${guitar.serial}, made in ${guitar.year}. Condition is ${guitar.condition}`;
             ul.appendChild(li);
-
         }
-    listContainer?.appendChild(ul);
+    
+    } else {
+
+        const li = document.createElement('li');
+        li.textContent = 'There are currently no guitars in stock!';
+        ul.appendChild(li);
     }
+
+    listContainer?.appendChild(ul);
+
 }
 
 
@@ -66,12 +72,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    if (document.getElementById('list-container')) {
+    if (document.getElementById('listContainer')) {
     
         console.log('loading printStock(), if you are not on the list page you should not see this');
         printStock();
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const clearStockButton = document.getElementById('clearStock');
+
+    if (clearStockButton) {
+        clearStockButton.addEventListener('click', function() {
+            clearStock();
+            console.log("stock cleared");
+        });
+    }
+});
+
+
+
+
 
 
 
